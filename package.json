@@ -8,5 +8,10 @@
     "vue-loader": "11.0.0",
     "vue-onsenui": "2.3.0",
     "vue-template-compiler": "^2.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-plugin-html": "^4.0.0",
+    "eslint-plugin-vue": "^3.13.1"
   }
 }

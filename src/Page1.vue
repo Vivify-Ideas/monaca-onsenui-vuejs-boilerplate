@@ -1,6 +1,6 @@
 <template>
   <v-ons-page>
-    <custom-toolbar>Page 1</custom-toolbar>
+    <!-- <custom-toolbar>Page 1</custom-toolbar> -->
     <p style="text-align: center">
       This is the first page
       <v-ons-button @click="push">Push Page 2</v-ons-button>
@@ -14,7 +14,7 @@
   export default {
      methods: {
        pop(){
-         this.pageStack.pop();
+         this.pageStack.pop()
        },
        push() {
          this.pageStack.push(page2);

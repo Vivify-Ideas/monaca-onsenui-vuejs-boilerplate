@@ -7,13 +7,12 @@
 
 <script>
   import customToolbar from './CustomToolbar';
-  import app from './App';
 
   export default {
     methods: {
       pop() {
         this.pageStack.pop();
-      } 
+      }
     },
     props: ['pageStack'],
     components: { customToolbar }
