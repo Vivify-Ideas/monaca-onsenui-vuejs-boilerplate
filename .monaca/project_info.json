@@ -1,0 +1,19 @@
+{
+    "framework_version": "3.5",
+    "cordova_version": "6.5",
+    "plugins": [
+        "mobi.monaca.plugins.Monaca"
+    ],
+    "external_plugins": [
+        "cordova-plugin-whitelist@1.3.1",
+        "cordova-plugin-splashscreen@4.0.3",
+        "cordova-custom-config@2.0.3"
+    ],
+    "template-type": "vue",
+    "build": {
+        "transpile": {
+            "enabled": true
+        }
+    },
+    "xcode_version": "8"
+}
