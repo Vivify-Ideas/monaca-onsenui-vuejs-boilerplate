@@ -8,6 +8,8 @@ require('onsenui/css/onsenui.css');
 
 import App from './App';
 
+Vue.config.productionTip = false
+
 Vue.use(VueOnsen);
 
 new Vue({

@@ -1,17 +1,43 @@
 <template>
   <v-ons-navigator :page-stack="pageStack">
-    <component :is="page" v-for="page in pageStack" :page-stack="pageStack"></component>
+    <component
+      v-for="page in pageStack"
+      :is="page"
+      :page-stack="pageStack"
+      :auth="auth"
+      :authenticated="authenticated"
+      @logout="logout"
+    ></component>
   </v-ons-navigator>
 </template>
 
 <script>
-  import page1 from './Page1';
+import guestPage from './pages/Guest';
+import dashboardPage from './pages/Dashboard';
+import AuthService from './auth/AuthService'
 
-  export default {
-    data() {
-      return {
-        pageStack: [page1]
+const auth = new AuthService()
+const { authenticated } = auth
+
+export default {
+  data() {
+    return {
+      pageStack: authenticated ? [dashboardPage] : [guestPage],
+      authenticated,
+      auth
+    }
+  },
+
+  methods: {
+    logout() {
+      this.auth.logout();
+
+      if (this.pageStack.length === 1) {
+        this.pageStack = [guestPage];
+      } else {
+        this.pageStack.pop();
       }
     }
   }
+}
 </script>
