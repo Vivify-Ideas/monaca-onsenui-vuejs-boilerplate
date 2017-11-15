@@ -16,7 +16,7 @@ import signUpPage from './guest/SignUp';
 export default {
   props: ['pageStack', 'auth'],
 
-  data: function() {
+  data() {
     return {
       tabs: [
         {

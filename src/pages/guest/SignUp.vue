@@ -62,7 +62,7 @@ import dashboardPage from '@/pages/Dashboard';
 export default {
   props: ['pageStack', 'auth'],
 
-  data: function() {
+  data() {
     return {
       user: {
         email: '',

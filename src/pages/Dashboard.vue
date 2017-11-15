@@ -3,7 +3,7 @@
   <v-ons-splitter>
     <v-ons-splitter-side
       swipeable
-      width="150px"
+      width="200px"
       collapse=""
       side="left"
       :open.sync="openSide"
@@ -19,6 +19,7 @@
             <div class="center">{{ page }}</div>
           </v-ons-list-item>
           <v-ons-list-item tappable @click="logout">
+            <div class="left"><v-ons-icon icon="fa-sign-out"></v-ons-icon></div>
             <div class="center">Log Out</div>
           </v-ons-list-item>
         </v-ons-list>
@@ -26,7 +27,7 @@
     </v-ons-splitter-side>
 
     <v-ons-splitter-content>
-      <component :is="currentPage" :toggle-menu="toggleMenu"></component>
+      <component :is="currentPage" :auth="auth" @open-page="openPage" :toggle-menu="toggleMenu"></component>
     </v-ons-splitter-content>
   </v-ons-splitter>
 </v-ons-page>
@@ -34,8 +35,11 @@
 
 <script type="text/javascript">
 import homePage from './dashboard/Home';
+import aboutPage from './dashboard/About';
 
 export default {
+  props: ['pageStack', 'auth'],
+
   data() {
     return {
       currentPage: 'Home',
@@ -46,6 +50,7 @@ export default {
 
   components: {
     Home: homePage,
+    About: aboutPage
   },
 
   methods: {
