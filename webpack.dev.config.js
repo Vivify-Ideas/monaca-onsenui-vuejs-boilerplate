@@ -16,6 +16,10 @@ try {
   throw new Error('Missing Webpack Build Dependencies.');
 }
 
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
+
 module.exports = {
   devtool: 'inline-source-map',
   context: __dirname,
@@ -45,7 +49,9 @@ module.exports = {
     unsafeCache: true,
 
     alias: {
-      vue:'vue/dist/vue.common.js'
+      vue:'vue/dist/vue.common.js',
+      env: path.join(__dirname, 'env/dev.env'),
+      '@': resolve('src')
     }
   },
 

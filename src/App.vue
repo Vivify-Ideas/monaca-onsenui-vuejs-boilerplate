@@ -11,6 +11,10 @@
   </v-ons-navigator>
 </template>
 
+<style lang="sass">
+  @import "./styles/app";
+</style>
+
 <script>
 import guestPage from './pages/Guest';
 import dashboardPage from './pages/Dashboard';
@@ -31,12 +35,7 @@ export default {
   methods: {
     logout() {
       this.auth.logout();
-
-      if (this.pageStack.length === 1) {
-        this.pageStack = [guestPage];
-      } else {
-        this.pageStack.pop();
-      }
+      this.pageStack = [guestPage];
     }
   }
 }

@@ -50,7 +50,8 @@ module.exports = {
     unsafeCache: useCache,
 
     alias: {
-      vue:'vue/dist/vue.common.js'
+      vue:'vue/dist/vue.common.js',
+      env: path.join(__dirname, 'env/prod.env')
     }
   },
 
