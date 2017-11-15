@@ -31,7 +31,8 @@ export default {
           label: 'Sign up',
           page: signUpPage,
           props: {
-            pageStack: this.pageStack
+            pageStack: this.pageStack,
+            auth: this.auth
           }
         },
       ]

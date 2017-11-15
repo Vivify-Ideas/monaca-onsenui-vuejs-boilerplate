@@ -9,7 +9,7 @@ export default class AuthService {
     this.logout = this.logout.bind(this)
     this.isAuthenticated = this.isAuthenticated.bind(this)
 
-    if (this.isAuthenticated()) {
+    if (this.authenticated) {
       this.userProfile = JSON.parse(localStorage.getItem('user_profile'))
     }
   }
@@ -47,6 +47,7 @@ export default class AuthService {
     localStorage.removeItem('access_token')
     localStorage.removeItem('id_token')
     localStorage.removeItem('expires_at')
+    localStorage.removeItem('user_profile')
     this.userProfile = null
   }
 

@@ -19,6 +19,10 @@ try {
 
 var useCache = !!process.env.WP_CACHE;
 
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
+
 module.exports = {
   context: __dirname,
   cache: useCache,
@@ -51,7 +55,8 @@ module.exports = {
 
     alias: {
       vue:'vue/dist/vue.common.js',
-      env: path.join(__dirname, 'env/prod.env')
+      env: path.join(__dirname, 'env/prod.env'),
+      '@': resolve('src')
     }
   },
 

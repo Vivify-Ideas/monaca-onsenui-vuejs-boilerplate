@@ -16,8 +16,8 @@ npm install
 
 ## Usage
 
-Run inside browser: `monaca preview`
-Run on monaca debuger (device): `monaca debug`
+- Run inside browser: `monaca preview`
+- Run on monaca debuger (device): `monaca debug`
 
 ## Directory/Files structure
 

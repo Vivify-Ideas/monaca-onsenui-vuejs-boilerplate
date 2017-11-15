@@ -48,8 +48,6 @@ export default {
     Home: homePage,
   },
 
-  props: ['pageStack'],
-
   methods: {
     toggleMenu() {
       this.openSide = !this.openSide;

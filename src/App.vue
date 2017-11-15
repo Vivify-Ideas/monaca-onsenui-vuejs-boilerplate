@@ -35,7 +35,11 @@ export default {
   methods: {
     logout() {
       this.auth.logout();
-      this.pageStack = [guestPage];
+      if (this.pageStack.length === 1) {
+        this.pageStack = [guestPage];
+      } else {
+        this.pageStack.pop();
+      }
     }
   }
 }
