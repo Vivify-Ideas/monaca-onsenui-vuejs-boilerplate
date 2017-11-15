@@ -30,7 +30,7 @@
 </template>
 
 <script type="text/javascript">
-import dashboardPage from './Dashboard';
+import dashboardPage from '@/pages/Dashboard';
 
 export default {
   props: ['pageStack', 'auth'],

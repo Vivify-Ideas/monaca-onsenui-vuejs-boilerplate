@@ -33,7 +33,7 @@
 </template>
 
 <script type="text/javascript">
-import homePage from './Home';
+import homePage from './dashboard/Home';
 
 export default {
   data() {

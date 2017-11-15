@@ -8,7 +8,7 @@
 </template>
 
 <script type="text/javascript">
-import customToolbar from '../components/CustomToolbar';
+import customToolbar from '@/components/CustomToolbar';
 
 export default {
   props: ['toggleMenu'],

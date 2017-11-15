@@ -10,8 +10,8 @@
 </template>
 
 <script type="text/javascript">
-import logInPage from './LogIn';
-import signUpPage from './SignUp';
+import logInPage from './guest/LogIn';
+import signUpPage from './guest/SignUp';
 
 export default {
   props: ['pageStack', 'auth'],
