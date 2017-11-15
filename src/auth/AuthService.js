@@ -1,4 +1,4 @@
-import Axios from 'Axios';
+import axios from 'axios';
 
 export default class AuthService {
 
@@ -15,7 +15,7 @@ export default class AuthService {
   }
 
   login (loginData) {
-    return Axios.post('http://localhost:3000/api/login', loginData).then(({data}) => {
+    return axios.post('/login', loginData).then(({data}) => {
       if (data && data.accessToken && data.idToken) {
         this.setSession(data)
       }
@@ -23,7 +23,7 @@ export default class AuthService {
   }
 
   signup (signupData) {
-    return Axios.post('http://localhost:3000/api/signup', signupData).then(({data}) => {
+    return axios.post('/signup', signupData).then(({data}) => {
       if (data && data.accessToken && data.idToken) {
         this.setSession(data)
       }
