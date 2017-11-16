@@ -8,10 +8,6 @@ export default class AuthService {
     this.setSession = this.setSession.bind(this)
     this.logout = this.logout.bind(this)
     this.isAuthenticated = this.isAuthenticated.bind(this)
-
-    if (this.authenticated) {
-      this.userProfile = JSON.parse(localStorage.getItem('user_profile'))
-    }
   }
 
   login (loginData) {
