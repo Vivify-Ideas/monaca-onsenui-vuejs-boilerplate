@@ -5,6 +5,7 @@
         <v-ons-list>
           <v-ons-list-item modifier="nodivider">
             <div class="center">
+              <!-- <span class="error" v-if="errors.email">{{ errors.email }}</span> -->
               <v-ons-input type="email" placeholder="Email" float v-model="user.email"></v-ons-input>
             </div>
           </v-ons-list-item>
@@ -34,7 +35,8 @@ export default {
       user: {
         email: '',
         password: ''
-      }
+      },
+      errors: {email: false}
     }
   },
 
@@ -58,6 +60,7 @@ export default {
         };
       }).catch((error) => {
         this.$ons.notification.alert(error.response.data.error.message);
+        this.errors.email = 'Invalid email';
       })
 
     }

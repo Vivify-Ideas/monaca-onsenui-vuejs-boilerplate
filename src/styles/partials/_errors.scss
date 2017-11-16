@@ -1,0 +1,23 @@
+$error-color: #f44336;
+
+.error {
+  color: $error-color;
+  position: absolute;
+  bottom: -4px;
+  font-size: 12px;
+}
+
+.error + ons-input {
+  .text-input--material__label--active {
+    color: $error-color!important;
+  }
+
+  .text-input--material:focus {
+    background-image: linear-gradient($error-color, $error-color),
+    linear-gradient(to top, transparent 1px, $error-color 1px);
+  }
+
+  .text-input--material {
+    background-image: linear-gradient(to top, transparent 1px, $error-color 1px);
+  }
+}
