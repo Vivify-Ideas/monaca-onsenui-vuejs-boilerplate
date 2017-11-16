@@ -5,7 +5,7 @@
         <v-ons-list>
           <v-ons-list-item modifier="nodivider">
             <div class="center">
-              <v-ons-input  placeholder="Email" float v-model="user.email"></v-ons-input>
+              <v-ons-input type="email" placeholder="Email" float v-model="user.email"></v-ons-input>
             </div>
           </v-ons-list-item>
 
