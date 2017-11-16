@@ -11,40 +11,37 @@ export default class AuthService {
   }
 
   login (loginData) {
-    return axios.post('/login', loginData).then(({data}) => {
-      if (data && data.accessToken && data.idToken) {
+    return axios.post('/Users/login', loginData).then(({data}) => {
+      if (data && data.id) {
         this.setSession(data)
       }
     })
   }
 
   signup (signupData) {
-    return axios.post('/signup', signupData).then(({data}) => {
-      if (data && data.accessToken && data.idToken) {
-        this.setSession(data)
-      }
+    return axios.post('/Users', signupData).then(() => {
+      return this.login({email: signupData.email, password: signupData.password});
     })
   }
 
   setSession (authResult) {
     // Set the time that the access token will expire at
     let expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
+      authResult.ttl * 1000 + new Date().getTime()
     )
-    localStorage.setItem('access_token', authResult.accessToken)
-    localStorage.setItem('id_token', authResult.idToken)
+    localStorage.setItem('access_token', authResult.id)
     localStorage.setItem('expires_at', expiresAt)
-    localStorage.setItem('user_profile', JSON.stringify(authResult.profile));
-    this.userProfile = authResult.profile;
+
+    axios.defaults.params = {access_token: authResult.id};
   }
 
   logout () {
-    // Clear access token and ID token from local storage
-    localStorage.removeItem('access_token')
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('expires_at')
-    localStorage.removeItem('user_profile')
-    this.userProfile = null
+    return axios.post('/Users/logout').then(() => {
+      axios.defaults.params = {};
+      // Clear access token from local storage
+      localStorage.removeItem('access_token')
+      localStorage.removeItem('expires_at')
+    });
   }
 
   isAuthenticated () {

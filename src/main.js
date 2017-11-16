@@ -22,5 +22,8 @@ Vue.use(VueOnsen);
 new Vue({
   el: '#app',
   template: '<app></app>',
-  components:{App}
+  components:{App},
+  beforeCreate() {
+    this.$ons.platform.select('android');
+  }
 });

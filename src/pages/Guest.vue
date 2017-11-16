@@ -1,7 +1,11 @@
 <template>
   <v-ons-page>
+    <v-ons-toolbar>
+      <div class="center">App name</div>
+    </v-ons-toolbar>
     <v-ons-tabbar
-      swipeable position="auto"
+      swipeable
+      position="auto"
       :tabs="tabs"
       :visible="true"
     >

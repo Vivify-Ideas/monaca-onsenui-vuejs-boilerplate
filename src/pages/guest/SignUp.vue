@@ -1,58 +1,31 @@
 <template>
   <v-ons-page>
-    <img src="https://placeimg.com/360/200/nature" style="width: 100%;">
+    <v-ons-card>
+      <form @submit="signup" autocomplete="false">
+        <v-ons-list>
+          <v-ons-list-item modifier="nodivider">
+            <div class="center">
+              <v-ons-input float placeholder="Email" v-model="user.email"></v-ons-input>
+            </div>
+          </v-ons-list-item>
 
-    <form @submit="signup" autocomplete="false">
-      <v-ons-list>
-        <v-ons-list-item>
-          <div class="left">
-            <v-ons-icon icon="md-account" class="list-item__icon"></v-ons-icon>
-          </div>
-          <div class="center">
-            <v-ons-input  placeholder="first name" v-model="user.firstName"></v-ons-input>
-          </div>
-        </v-ons-list-item>
+          <v-ons-list-item modifier="nodivider">
+            <div class="center">
+              <v-ons-input float type="password" placeholder="Password" v-model="user.password"></v-ons-input>
+            </div>
+          </v-ons-list-item>
 
-        <v-ons-list-item>
-          <div class="left">
-            <v-ons-icon icon="md-account" class="list-item__icon"></v-ons-icon>
-          </div>
-          <div class="center">
-            <v-ons-input  placeholder="last name" v-model="user.lastName"></v-ons-input>
-          </div>
-        </v-ons-list-item>
-
-        <v-ons-list-item>
-          <div class="left">
-            <v-ons-icon icon="md-email" class="list-item__icon"></v-ons-icon>
-          </div>
-          <div class="center">
-            <v-ons-input  placeholder="you@example.com" v-model="user.email"></v-ons-input>
-          </div>
-        </v-ons-list-item>
-
-        <v-ons-list-item>
-          <div class="left">
-            <v-ons-icon icon="md-shield-security" class="list-item__icon"></v-ons-icon>
-          </div>
-          <div class="center">
-            <v-ons-input type="password" placeholder="your password" v-model="user.password"></v-ons-input>
-          </div>
-        </v-ons-list-item>
-
-        <v-ons-list-item>
-          <div class="left">
-            <v-ons-icon icon="md-shield-security" class="list-item__icon"></v-ons-icon>
-          </div>
-          <div class="center">
-            <v-ons-input type="password" placeholder="confirm password" v-model="user.confirmPassword"></v-ons-input>
-          </div>
-        </v-ons-list-item>
-        <v-ons-list-item>
-          <v-ons-button @click="signup" :disabled="signupDisabled" modifier="large">SIGN UP <v-ons-icon icon="md-chevron-right"></v-ons-icon></v-ons-button>
-        </v-ons-list-item>
-      </v-ons-list>
-    </form>
+          <v-ons-list-item modifier="nodivider">
+            <div class="center">
+              <v-ons-input float type="password" placeholder="Confirm password" v-model="user.confirmPassword"></v-ons-input>
+            </div>
+          </v-ons-list-item>
+          <v-ons-list-item modifier="nodivider">
+            <v-ons-button @click="signup" :disabled="signupDisabled" modifier="large">SIGN UP <v-ons-icon icon="md-chevron-right"></v-ons-icon></v-ons-button>
+          </v-ons-list-item>
+        </v-ons-list>
+      </form>
+    </v-ons-card>
   </v-ons-page>
 </template>
 
@@ -67,17 +40,14 @@ export default {
       user: {
         email: '',
         password: '',
-        confirmPassword: '',
-        firstName: '',
-        lastName: ''
+        confirmPassword: ''
       }
     }
   },
 
   computed: {
     signupDisabled() {
-      return !this.user.email || !this.user.password || !this.user.confirmPassword ||
-        !this.user.firstName || !this.user.lastName;
+      return !this.user.email || !this.user.password || !this.user.confirmPassword;
     }
   },
 
@@ -95,7 +65,8 @@ export default {
         this.pageStack.push(dashboardPage);
         this.user = {
           email: '',
-          password: ''
+          password: '',
+          confirmPassword: ''
         };
       })
 

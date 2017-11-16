@@ -2,7 +2,7 @@
   <v-ons-page>
     <custom-toolbar title="Home" :action="toggleMenu"></custom-toolbar>
     <p style="text-align: center">
-      Welcome {{ auth.userProfile.firstName }}
+      Welcome
     </p>
 
     <v-ons-button @click="openModal">Open modal</v-ons-button>
