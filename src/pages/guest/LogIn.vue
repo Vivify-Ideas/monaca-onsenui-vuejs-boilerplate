@@ -1,18 +1,19 @@
 <template>
   <v-ons-page>
+
     <v-ons-card>
-      <form @submit="login" autocomplete="false">
+      <form @submit="login" autocomplete="off">
         <v-ons-list>
           <v-ons-list-item modifier="nodivider">
             <div class="center">
               <!-- <span class="error" v-if="errors.email">{{ errors.email }}</span> -->
-              <v-ons-input type="email" placeholder="Email" float v-model="user.email"></v-ons-input>
+              <v-ons-input autocomplete="off" type="email" placeholder="Email" float v-model="user.email"></v-ons-input>
             </div>
           </v-ons-list-item>
 
           <v-ons-list-item modifier="nodivider">
             <div class="center">
-              <v-ons-input type="password" placeholder="Password" float v-model="user.password"></v-ons-input>
+              <v-ons-input name="password" autocomplete="new-password" type="password" placeholder="Password" float v-model="user.password"></v-ons-input>
             </div>
           </v-ons-list-item>
           <v-ons-list-item modifier="nodivider">
