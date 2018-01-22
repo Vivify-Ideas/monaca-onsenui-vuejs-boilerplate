@@ -1,6 +1,12 @@
 <template>
   <v-ons-page>
-    <v-ons-card>
+    <v-ons-toolbar>
+      <div class="left">
+        <v-ons-back-button></v-ons-back-button>
+      </div>
+      <div class="center">SIGN UP</div>
+    </v-ons-toolbar>
+
       <form @submit="signup" autocomplete="false">
         <v-ons-list>
           <v-ons-list-item modifier="nodivider">
@@ -21,11 +27,10 @@
             </div>
           </v-ons-list-item>
           <v-ons-list-item modifier="nodivider">
-            <v-ons-button @click="signup" :disabled="signupDisabled" modifier="large">SIGN UP <v-ons-icon icon="md-chevron-right"></v-ons-icon></v-ons-button>
+            <v-ons-button @click="signup" :disabled="signupDisabled" modifier="large">Sign up</v-ons-icon></v-ons-button>
           </v-ons-list-item>
         </v-ons-list>
       </form>
-    </v-ons-card>
   </v-ons-page>
 </template>
 

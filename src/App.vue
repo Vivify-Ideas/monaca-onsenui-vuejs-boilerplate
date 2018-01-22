@@ -7,6 +7,7 @@
       :auth="auth"
       :authenticated="authenticated"
       @logout="logout"
+      @push-page="pageStack.push($event)"
     ></component>
   </v-ons-navigator>
 </template>

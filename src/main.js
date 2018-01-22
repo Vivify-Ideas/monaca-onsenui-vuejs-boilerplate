@@ -25,6 +25,6 @@ new Vue({
   template: '<app></app>',
   components:{App},
   beforeCreate() {
-    this.$ons.platform.select('android');
+    this.$ons.platform.select('ios');
   }
 });

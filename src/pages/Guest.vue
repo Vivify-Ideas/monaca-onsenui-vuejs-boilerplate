@@ -1,45 +1,26 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar>
-      <div class="center">App name</div>
-    </v-ons-toolbar>
-    <v-ons-tabbar
-      swipeable
-      position="auto"
-      :tabs="tabs"
-      :visible="true"
-    >
-    </v-ons-tabbar>
+    <section style="margin: 5px;">
+      <v-ons-button @click="signup()" style="margin-bottom: 5px;" modifier="large">Sign Up</v-ons-button>
+      <v-ons-button @click="login()" modifier="large">Log In</v-ons-button>
+    </section>
   </v-ons-page>
 </template>
 
 <script type="text/javascript">
-import logInPage from './guest/LogIn';
-import signUpPage from './guest/SignUp';
+import logInPage from './LogIn';
+import signUpPage from './SignUp';
 
 export default {
   props: ['pageStack', 'auth'],
 
-  data() {
-    return {
-      tabs: [
-        {
-          label: 'Log In',
-          page: logInPage,
-          props: {
-            pageStack: this.pageStack,
-            auth: this.auth
-          }
-        },
-        {
-          label: 'Sign up',
-          page: signUpPage,
-          props: {
-            pageStack: this.pageStack,
-            auth: this.auth
-          }
-        },
-      ]
+  methods: {
+    login() {
+      this.$emit('push-page', logInPage);
+    },
+
+    signup() {
+      this.$emit('push-page', signUpPage);
     }
   }
 }

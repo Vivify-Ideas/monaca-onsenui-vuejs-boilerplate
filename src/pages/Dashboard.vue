@@ -1,69 +1,55 @@
 <template>
-<v-ons-page>
-  <v-ons-splitter>
-    <v-ons-splitter-side
-      swipeable
-      width="200px"
-      collapse=""
-      side="left"
-      :open.sync="openSide"
-    >
-      <v-ons-page>
-        <v-ons-list>
-          <v-ons-list-item
-            v-for="page in pages"
-            tappable
-            modifier="chevron"
-            @click="openPage(page)"
-          >
-            <div class="center">{{ page }}</div>
-          </v-ons-list-item>
-          <v-ons-list-item tappable @click="logout">
-            <div class="left"><v-ons-icon icon="fa-sign-out"></v-ons-icon></div>
-            <div class="center">Log Out</div>
-          </v-ons-list-item>
-        </v-ons-list>
-      </v-ons-page>
-    </v-ons-splitter-side>
+  <v-ons-page>
+    <custom-toolbar title="HOME"></custom-toolbar>
+    <p style="text-align: center">
+      Welcome
+    </p>
 
-    <v-ons-splitter-content>
-      <component :is="currentPage" :auth="auth" @open-page="openPage" :toggle-menu="toggleMenu"></component>
-    </v-ons-splitter-content>
-  </v-ons-splitter>
-</v-ons-page>
+    <v-ons-button @click="openModal">Open modal</v-ons-button>
+    <v-ons-button @click="openConfirmDialog">Open confirm dialog</v-ons-button>
+    <v-ons-button @click="openDialog">Open dialog</v-ons-button>
+
+
+    <v-ons-modal :visible="modalVisible" @click="modalVisible = false">
+      <p style="text-align: center">
+        Loading <v-ons-icon icon="fa-spinner" spin></v-ons-icon>
+        <br><br>
+        Click to close
+      </p>
+    </v-ons-modal>
+
+    <v-ons-dialog cancelable :visible.sync="dialogVisible">
+      <p style="text-align: center">Lorem ipsum</p>
+    </v-ons-dialog>
+
+  </v-ons-page>
 </template>
 
 <script type="text/javascript">
-import homePage from './dashboard/Home';
-import aboutPage from './dashboard/About';
+import customToolbar from '@/components/CustomToolbar';
 
 export default {
-  props: ['pageStack', 'auth'],
+  props: ['auth'],
+
+  components: { customToolbar },
 
   data() {
     return {
-      currentPage: 'Home',
-      pages: ['Home'],
-      openSide: false
-    };
-  },
-
-  components: {
-    Home: homePage,
-    About: aboutPage
+      modalVisible: false,
+      dialogVisible: false,
+    }
   },
 
   methods: {
-    toggleMenu() {
-      this.openSide = !this.openSide;
+    openModal() {
+      this.modalVisible = true;
     },
-    openPage(page) {
-      this.currentPage = page;
-      this.openSide = false;
+    openDialog() {
+      this.dialogVisible = true;
     },
-    logout() {
-      this.$emit('logout');
-    }
+    openConfirmDialog() {
+      this.$ons.notification.confirm('Are you ready?')
+    },
   }
 }
 </script>
